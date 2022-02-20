@@ -1,0 +1,337 @@
+-- DEKLAROWANIE KLASY --
+class Klienci
+    {
+        
+        private string imie, nazwisko, adres, email;
+        private int nrtele;
+        private object oferta, okres;
+        public string Imie { get => imie; set => imie = value; }
+
+        public string Nazwisko { get => nazwisko; set => nazwisko = value; }
+
+        public string Adres { get => adres; set => adres = value; }
+
+        public object Oferta { get => oferta; set => oferta = value; }
+
+        public object Okres { get => okres; set => okres = value; }
+
+        public string Email { get => email; set => email = value; }
+
+        public int Nrtele { get => nrtele; set => nrtele = value; }
+    }
+
+
+
+-- DEKLAROWANIE LISTY --
+
+List<Klienci> Klient = new List<Klienci>();
+
+
+
+-- DODAWANIE DANYCH --
+
+Klienci k = new Klienci();
+k.Imie = textBox1.Text;
+k.Nazwisko = textBox2.Text;
+k.Adres = textBox3.Text;
+k.Nrtele = (int)numericUpDown1.Value;
+k.Oferta = comboBox1.SelectedItem;
+k.Okres = comboBox2.SelectedItem;
+k.Email = textBox4.Text;
+
+Klient.Add(k);
+
+
+
+
+
+-- DODAWANIE DO DATAGRIDVIEW --
+
+dataGridView1.Rows.Add(k.Imie, k.Nazwisko, k.Adres, k.Nrtele, k.Oferta, k.Okres, k.Email, label10.Text);
+
+-----
+var binding = new BindingSource();
+            binding.DataSource = ListaPrzejazdow;
+            dataGridView1.DataSource = binding;
+
+
+
+
+
+
+-- USUWANIE Z DATAGRIDVIEW --
+
+foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                dataGridView1.Rows.RemoveAt(row.Index);
+            }
+----
+
+foreach (DataGridViewRow r in dataGridView1.SelectedRows)
+                Produkt.ListaProduktów.Remove((Produkt)r.Tag);
+
+
+
+
+
+-- SPRAWDZANIE WYBRANEGO ELEMENTU Z DATAGRIDVIEW --
+
+if (dataGridView1.SelectedRows.Count != 0)
+{
+MessageBox.Show("Wybra³eœ wiersz do Edycji. Edytuj go formularzem obok !");
+}
+
+
+
+
+
+
+
+
+-- FORMLOAD DO UMIESZCZANIA W NIM DANYCH --
+
+ private void Form1_Load(object sender, EventArgs e)
+        {
+            Telefon a, b;
+            a = new Telefon();
+            a.Marka = "Samsung";
+            
+            lista.Add(a);
+
+            b = new Telefon();
+            b.Marka = "Sony";
+            
+            lista.Add(b);
+
+            refresh();
+
+        }
+
+
+
+
+
+-- REFRESH() --
+
+private void refresh()
+ {
+  dataGridView1.Rows.Clear();
+  int lp = 1;
+  foreach (Produkt p in Produkt.ListaProduktów)
+  {
+   int nr_wiersza=dataGridView1.Rows.Add(new object[] { lp++, p.Nazwa,p.Cena.ToString("0.00") });
+   dataGridView1.Rows[nr_wiersza].Tag = p;
+  }
+ }
+
+------
+listBox1.Items.Clear();
+            foreach (Zawodnik z in listaZawodników)
+                listBox1.Items.Add(z.Imiê + " " + z.Czas.ToString("0.0"));
+
+
+
+
+
+
+
+-- TIMER --
+
+private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = (DateTime.Now - z.Start).TotalSeconds.ToString("0.0");
+        }
+
+
+
+
+
+-- DODAWANIE DO COMBOBOXA --
+
+listaZawodniczek.Add(z);
+foreach(Zawodniczka zz in listaZawodniczek)
+            {
+                comboBox1.Items.Add(zz.Imiê + " " + zz.Nazwisko);
+                comboBox2.Items.Add(zz.Imiê + " " + zz.Nazwisko);
+            }
+
+
+
+
+
+
+
+
+
+-- PRZYDATNE W KLASIE PRZY DODAWANIU COMBOBOX.DATASOURCE --
+
+public override string ToString()
+        {
+            return imie + " " + nazwisko;
+        }
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+namespace naukazaliczenie
+{
+    public partial class Form1 : Form
+    {
+
+        List<Kurs> Listaprzejazdów = new List<Kurs>();
+        public Form1()
+        {
+            InitializeComponent();
+            Kierowca k1 = new Kierowca();
+            k1.Imie = "Janusz";
+            k1.Nazwisko = "Kot";
+            k1.Pesel = 999993291392;
+            k1.Rokrozppracy = 1985;
+            k1.Stawkah = 16;
+            k1.Stawkak = 7;
+
+
+            Kierowca k2 = new Kierowca();
+            k2.Imie = "Piotr";
+            k2.Nazwisko = "Lis";
+            k2.Pesel = 999993331392;
+            k2.Rokrozppracy = 1987;
+            k2.Stawkah = 15;
+            k2.Stawkak = 5;
+
+
+            Kierowca k3 = new Kierowca();
+            k3.Imie = "Julisz";
+            k3.Nazwisko = "Cezar";
+            k3.Pesel = 999993291372;
+            k3.Rokrozppracy = 1990;
+            k3.Stawkah = 14;
+            k3.Stawkak = 5;
+
+
+            Kierowca k4 = new Kierowca();
+            k4.Imie = "Ewa";
+            k4.Nazwisko = "B¹k";
+            k4.Pesel = 999993291390;
+            k4.Rokrozppracy = 1992;
+            k4.Stawkah = 14;
+            k4.Stawkak = 5;
+
+
+            Kierowca k5 = new Kierowca();
+            k5.Imie = "Janusz";
+            k5.Nazwisko = "Wilk";
+            k5.Pesel = 999993211112;
+            k5.Rokrozppracy = 1985;
+            k5.Stawkah = 14;
+            k5.Stawkak = 6;
+
+
+
+            List<Kierowca> Listakierowców = new List<Kierowca>();
+            Listakierowców.Add(k1);
+            Listakierowców.Add(k2);
+            Listakierowców.Add(k3);
+            Listakierowców.Add(k4);
+            Listakierowców.Add(k5);
+
+            comboBox1.DataSource = Listakierowców;
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Kierowca k = new Kierowca();
+            k = (Kierowca)comboBox1.SelectedItem;
+
+            if (numericUpDown1.Value == 0 || numericUpDown2.Value == 0)
+            {
+                MessageBox.Show("WprowadŸ wartoœci !");
+                return;
+            }
+
+            Kurs p1 = new Kurs();
+            p1.Dataw = dateTimePicker1.Value;
+            p1.Datap = dateTimePicker2.Value;
+            p1.Liczbakm = (int)numericUpDown1.Value;
+            p1.Liczbah = (int)numericUpDown2.Value;
+            p1.K = k;
+            Listaprzejazdów.Add(p1);
+
+            var binding = new BindingSource();
+            binding.DataSource = Listaprzejazdów;
+            dataGridView1.DataSource = binding;
+
+
+        }
+    }
+
+
+------------------------------------------------------------------------
+
+namespace naukazaliczenie
+{
+    class Kurs
+    {
+        private DateTime dataw, datap;
+        private Kierowca k;
+        private string imie, nazwisko;
+        private int liczbah, liczbakm;
+        private double wynagrodzenie;
+
+        public DateTime Dataw { get => dataw; set => dataw = value; }
+        public DateTime Datap { get => datap; set => datap = value; }
+
+        internal Kierowca K { get => k; set => k = value; }
+        public string Imie { get => k.Imie; }
+        public string Nazwisko { get => k.Nazwisko; }
+
+        public int Liczbah { get => liczbah; set => liczbah = value; }
+        public int Liczbakm { get => liczbakm; set => liczbakm = value; }
+
+        public double Wynagrodzenie { get => (k.Stawkah * Liczbah) + (k.Stawkak * Liczbakm); }
+
+
+
+    }
+}
+
+
+-----------------------------------------------------------------------
+
+namespace naukazaliczenie
+{
+    class Kierowca
+    {
+        private string imie, nazwisko;
+        private int stawkah, stawkak, rokrrozppracy;
+        private long pesel;
+        public string Imie { get => imie; set => imie = value; }
+        public string Nazwisko { get => nazwisko; set => nazwisko = value; }
+
+        public long Pesel { get => pesel; set => pesel = value; }
+
+        public int Rokrozppracy { get => rokrrozppracy; set => rokrrozppracy = value; }
+        public int Stawkah { get => stawkah; set => stawkah = value; }
+        public int Stawkak { get => stawkak; set => stawkak = value; }
+
+        public override string ToString()
+        {
+            return imie + " " + nazwisko;
+        }
+    }
+}
+
+
+
+
+
+
+
